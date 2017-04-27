@@ -5,7 +5,7 @@
  * <pre>
  * 分页对象.
  * param参数为要查询的参数信息,如:username="zhangsan", 
- * name在MyBatis里面就是<if test="param.zhangsan != null"> ...
+ * name在MyBatis里面就是<if test="param.username != null"> ...
  * orders为数据排序信息, 可以多个,并且有序.
  * 其中total在MyBatis拦截器拦截会自动设置其值.
  * </pre>
