@@ -13,6 +13,9 @@ docker exec -it container_id bash
 # copy resource in container
 docker cp host_path container_id:container_path
 
+# inspect
+docker inspect container_id
+
 docker stop/start
 
 docker ps [-a]
