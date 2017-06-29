@@ -137,3 +137,46 @@ mvn help:help
 mvn archetype:generate -DarchetypeCatalog=intrenal
 
 ```
+
+> spring-boot maven profile replace properties
+
+
+```
+<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profile.active>dev</spring.profile.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>ga</id>
+			<properties>
+				<spring.profile.active>ga</spring.profile.active>
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>utf-8</encoding>
+						<useDefaultDelimiters>true</useDefaultDelimiters>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+```
+
