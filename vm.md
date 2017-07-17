@@ -55,3 +55,33 @@ $ mount /dev/sdb1 /home/data1
 
 ```
 
+
+> virtualbox static // /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+```
+TYPE="Ethernet"
+DEFROUTE="yes"
+PEERDNS="yes"
+PEERROUTES="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_PEERDNS="yes"
+IPV6_PEERROUTES="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="enp0s3"
+UUID="2b7ec3a4-eed4-4e99-b052-7884389e341b"
+DEVICE="enp0s3"
+
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.2.244
+DNS1=8.8.8.8
+DNS2=114.114.114.114
+NETMASK=255.255.255.0
+GATEWAY=192.168.2.1
+
+```
