@@ -180,3 +180,26 @@ mvn archetype:generate -DarchetypeCatalog=intrenal
 	</build>
 ```
 
+## multi module change version 
+
+> mvn source:jar install -Dmaven.test.skip=true
+
+```
+Use versions:set from the versions-maven plugin:
+
+mvn versions:set -DnewVersion=2.50.1-SNAPSHOT
+It will adjust all pom versions, parent versions and dependency versions in a multi-module project.
+
+If you made a mistake, do
+
+mvn versions:revert
+afterwards, or
+
+mvn versions:commit
+if you're happy with the results.
+
+
+
+
+```
+
