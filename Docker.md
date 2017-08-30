@@ -57,3 +57,19 @@ docker run -dti \
 -v /root/datas/tomcat/logs:/usr/local/apache-tomcat-9.0.0.M21/logs \
 luoyh/tomcat
 ```
+
+### Redis On Docker
+
+```
+docker pull redis
+docker run -dti --name redis -p 6379:6379 -v /var/dd/redis:/data redis 
+```
+> Operator Redis With Docker redis-cli
+
+```
+docker run --rm -it --link redis:redis redis /bin/bash
+xxx@abccd:/data# redis-cli -h redis -p 6379
+redis:6379> ...
+```
+
+
