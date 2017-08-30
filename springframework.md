@@ -39,3 +39,6 @@ public Docket productApi() {
 					"http://www.rolyh.com"));
 }
 ```
+
+### URL参数匹配工具类
+> org.springframework.util.PatternMatchUtils
