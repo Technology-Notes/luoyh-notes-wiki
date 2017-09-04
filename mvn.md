@@ -188,6 +188,11 @@ mvn archetype:generate -DarchetypeCatalog=intrenal
 Use versions:set from the versions-maven plugin:
 
 mvn versions:set -DnewVersion=2.50.1-SNAPSHOT
+
+And you can set dont create backup file. Use [generateBackupPoms=false]:
+
+mvn versions:set -DnewVersion=2.33.1 -DgenerateBackupPoms=false 
+
 It will adjust all pom versions, parent versions and dependency versions in a multi-module project.
 
 If you made a mistake, do
