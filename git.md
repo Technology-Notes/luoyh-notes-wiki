@@ -157,3 +157,39 @@ git push origin :branch.name
 
 撤銷git add . => git rm -r –cached .
 ```
+
+### Git set multi ssh key <a href="https://my.oschina.net/tcyu/blog/1612674" target="_blank">HERE</a>
+
+```
+# gitlab
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.gitlab -C "email"
+# github
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.github -C "email"
+# gogs
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.gogs -C "email"
+
+// 创建config文件
+touch ~/.ssh/config
+
+// 添加如下配置
+# github
+Host github.com
+    HostName github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.github
+
+# gitee
+Host gogs.com
+    HostName gitee.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.gogs
+
+# 公司 gitlab
+Host 10.10.10.28
+    HostName 10.10.10.28
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa.gitlab
+
+```
+
+
