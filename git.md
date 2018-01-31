@@ -1,12 +1,29 @@
 # git
 
-### git base command <a href="http://blog.yubangweb.com/kan-wan-jiu-hui-yong-de-gitcao-zuo-tu-jie-fen-xi/" target="_blank">see here</a>
-> base
+### git base command [HERE](http://blog.yubangweb.com/kan-wan-jiu-hui-yong-de-gitcao-zuo-tu-jie-fen-xi/)
+
+
 ```
+
 git clone x
 git add y
 git commit -m 'z'
 git push
+
+
+# exists folder
+
+mkdir git-folder
+cd git-folder
+git init
+git remote add origin https:/github.com/luoyh/git-folder.git
+git add .
+git commmit -m "init"
+git push -u origin master
+
+# clone wiki
+git clone https://github.com/luoyh/notes.wiki.git
+
 ```
 
 ```
@@ -158,7 +175,7 @@ git push origin :branch.name
 撤銷git add . => git rm -r –cached .
 ```
 
-### Git set multi ssh key <a href="https://my.oschina.net/tcyu/blog/1612674" target="_blank">HERE</a>
+### Git set multi ssh key [HERE](https://my.oschina.net/tcyu/blog/1612674")
 
 ```
 # gitlab
