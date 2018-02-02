@@ -58,9 +58,20 @@ Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就�
 | zebra stripes | are neat      |    $1 |
 ```
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 # 代码框
-在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。图例：
-`public void main(String[] args){           sysmtom.out.println("hallo world"); }`
+在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。
+图例：
+`
+public void main(String[] args){           
+   sysmtom.out.println("hallo world"); 
+}
+`
 
 使用 `tab`键即可缩进。
 
