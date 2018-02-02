@@ -69,7 +69,6 @@ Markdown 的粗体和斜体也非常简单，用两个 * 包含一段文本就�
 
 ***
 
-![image](http://note.youdao.com/favicon.ico)
 ```
 private void main(){
     
