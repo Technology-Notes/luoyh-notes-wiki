@@ -157,3 +157,22 @@ firewall-cmd --zone= public --query-port=80/tcp
 firewall-cmd --zone= public --remove-port=80/tcp --permanent
 
 ```
+
+### addition user and group
+
+```
+
+创建/删除组
+# groupadd/groupdel user0group
+
+
+创建用户:
+# useradd -d /home/user0 -m user0 -g user0group
+修改密码:
+# passwd user0
+New password:user0password
+Re-enter new password:user0password
+添加目录权限
+# chown user0 /home/user0
+
+```
