@@ -93,5 +93,5 @@
 
 [npm 镜像]
 
-[cnpmjs](http://cnpmjs.org/){:target="_blank"}
+[cnpmjs](http://cnpmjs.org/)
 
