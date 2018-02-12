@@ -7,3 +7,5 @@ sudo java -classpath "$JAVA_HOME/lib/sa-jdi.jar" sun.jvm.hotspot.HSDB
 
 
 
+java -jar cfr.jar xxx.jar --outputdir d:/x/y
+
