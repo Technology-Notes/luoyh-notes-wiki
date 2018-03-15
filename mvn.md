@@ -208,3 +208,43 @@ if you're happy with the results.
 
 ```
 
+
+## deploy to repository
+
+```
+// in pom.xml addition:
+
+<distributionManagement>
+    <repository>
+        <id>nexus-releases</id>
+        <name>Nexus Snapshots Repository</name>
+        <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <name>Nexus Snapshots Repository</name>
+        <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+
+// in settings.xml
+
+<servers>
+    <server>
+        <id>nexus-releases</id>
+        <username>deployment</username>
+        <password>deployment01</password>
+    </server>
+    <server> 
+        <id>nexus-snapshots</id>
+        <username>deployment</username>
+        <password>deployment02</password>
+    </server>
+</servers>
+
+# server.id = repository.id
+
+
+mvn deploy --settings /local/maven/conf/local.xml
+
+```
