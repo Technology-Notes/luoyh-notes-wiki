@@ -45,6 +45,14 @@ output:
   0.00  25.00  64.72  89.83  67.47   3835   14.083     1    0.282   14.364
 
 description:
-    
+    S0/S1: survivor
+    E: eden
+    O: 老年代
+    P: 永久代
+    YGC: 年轻代GC次数
+    YGCT: 年轻代GC共消耗时间(s)
+    FGC: Full GC次数
+    FGCT: Full GC共消耗时间(s)
+    GCT: GC共消耗时间(s)
 
 ```
