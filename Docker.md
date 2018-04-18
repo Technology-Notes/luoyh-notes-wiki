@@ -73,3 +73,58 @@ redis:6379> ...
 ```
 
 
+
+
+### CentOs7安装docker, 并且安装CentOs7镜像
+
+
+```
+# 配置阿里云yum源
+# backup old
+> mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+> wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+> yum clean all
+> yum makecache 
+> yum update
+
+# 阿里云docker的yum源
+> yum install -y epel-release
+> yum clean all
+> yum makecache 
+> yum update
+
+# 安装docker & 启动docker
+> yum install -y docker
+> systemctl start docker
+> docker info
+
+# 安装CentOs7镜像, 使用网易镜像, 默认安装了openssh-server,提供了ssh登录
+> docker pull hub.c.163.com/public/centos:7.2-tools
+
+# 启动镜像
+> docker images 
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+centos7/0.1                   latest              ce0d469d287b        35 minutes ago      515 MB
+hub.c.163.com/public/centos   7.2-tools           4a4618db62b9        13 months ago       515 MB
+
+> docker run -dti -p 50001:22 4a4618db62b9 /bin/bash
+
+# 进入容器
+> docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                   NAMES
+956543610f65        ce0d469d287b        "/bin/bash"         36 minutes ago      Up 36 minutes       0.0.0.0:50001->22/tcp   cocky_leakey
+> docker attach 956543610f65
+# 镜像CentOs设置密码, 开启ssh
+#> passwd root
+#> /usr/sbin/sshd -D
+# Ctrl + p + q
+
+# 配置端口
+> firewall-cmd --zone=public --add-port=50001/tcp --permanent
+> firewall-cmd --reload
+
+# 完成, 现在就可以使用ssh,端口为50001,密码是root进行登录了.
+
+
+
+```
