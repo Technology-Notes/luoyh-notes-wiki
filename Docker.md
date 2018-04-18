@@ -75,7 +75,7 @@ redis:6379> ...
 
 
 
-### CentOs7安装docker, 并且安装CentOs7镜像
+### CentOS7安装docker, 并且安装CentOS7镜像
 
 
 ```
@@ -98,7 +98,7 @@ redis:6379> ...
 > systemctl start docker
 > docker info
 
-# 安装CentOs7镜像, 使用网易镜像, 默认安装了openssh-server,提供了ssh登录
+# 安装CentOS7镜像, 使用网易镜像, 默认安装了openssh-server,提供了ssh登录
 > docker pull hub.c.163.com/public/centos:7.2-tools
 
 # 启动镜像
@@ -114,7 +114,7 @@ hub.c.163.com/public/centos   7.2-tools           4a4618db62b9        13 months 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                   NAMES
 956543610f65        ce0d469d287b        "/bin/bash"         36 minutes ago      Up 36 minutes       0.0.0.0:50001->22/tcp   cocky_leakey
 > docker attach 956543610f65
-# 镜像CentOs设置密码, 开启ssh
+# 镜像CentOS设置密码, 开启ssh
 #> passwd root
 #> /usr/sbin/sshd -D
 # Ctrl + p + q
