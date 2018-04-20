@@ -54,3 +54,36 @@ public class Dl {
 }
 
 ```
+
+
+
+```
+
+#!/bin/sh
+#chkconfig: 2345 80 80
+#description auto start web server
+
+echo "Starting aplication"
+
+export JAVA_HOME=/usr/lib/jvm/jdk1.8/
+export PATH=$JAVA_HOME/bin:$PATH
+
+java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=28081,suspend=n -jar /opt/hub/run.jar --spring.config.location=/opt/hub/config/application.properties > /opt/hub/logs/run.log &
+echo $! > /opt/hub/run.pid
+
+echo "Completed"
+
+    
+
+
+#!stop server
+#!/bin/sh
+echo "Stopping application"
+
+pid=$(cat /opt/hub/run.pid)
+kill -9 $pid
+
+echo "Completed"
+
+
+```
