@@ -68,7 +68,11 @@ echo "Starting aplication"
 export JAVA_HOME=/usr/lib/jvm/jdk1.8/
 export PATH=$JAVA_HOME/bin:$PATH
 
-java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=28081,suspend=n -jar /opt/hub/run.jar --spring.config.location=/opt/hub/config/application.properties > /opt/hub/logs/run.log &
+java -Xdebug -Xrunjdwp:server=y,\
+     transport=dt_socket,address=28081,suspend=n \
+     -jar /opt/hub/run.jar \
+     --spring.config.location=/opt/hub/config/application.properties \
+     > /opt/hub/logs/run.log &
 echo $! > /opt/hub/run.pid
 
 echo "Completed"
