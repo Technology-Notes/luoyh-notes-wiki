@@ -5,7 +5,7 @@
 > org.springframework.context.SmartLifecycle
 > 实现:
 > org.springframework.context.ApplicationContextAware等
-
+> CommandLineRunner , ApplicationRunner 
 ### 获取参数名
 >org.springframework.core.LocalVariableTableParameterNameDiscoverer
 
