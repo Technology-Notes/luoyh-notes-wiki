@@ -1,11 +1,15 @@
 # Spring Framework notes
 
 ### 在Spring启动后做一些事情.
+
+```
 > 实现 Lifecycle 推荐  
 > org.springframework.context.SmartLifecycle
 > 实现:
 > org.springframework.context.ApplicationContextAware等
 > CommandLineRunner , ApplicationRunner 
+```
+
 ### 获取参数名
 >org.springframework.core.LocalVariableTableParameterNameDiscoverer
 
