@@ -166,6 +166,16 @@ git push origin :branch.name
 
 推送所有标签到远程：git push origin –tags
 
+
+查看tag的创建日期
+
+#列出打tag的日期和tag
+git for-each-ref --sort=taggerdate --format '%(refname) %(taggerdate)' refs/tags
+#只列出tag
+git for-each-ref --sort=taggerdate --format '%(refname) %' refs/tags
+
+git log --tags --simplify-by-decoration --pretty="format:%ci %d"
+
 其他
 
 配置别名：git config –global alias.st status
