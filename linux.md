@@ -21,6 +21,10 @@ du命令用来查看目录或文件所占用磁盘空间的大小。常用选项
 
 ls -lh
 
+```
+查询指定目录文件内容包含字符串:
+find ./ -type f | xargs grep -i "getLoadcurve"
+```
 
 可以尝试使用文件描述符(fd)恢复rm误删的MySQL数据文件(要求数据库没有重启)
 查看哪个进程正在操作目录/var/lib/mysql
