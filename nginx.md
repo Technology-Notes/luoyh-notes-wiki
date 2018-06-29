@@ -34,7 +34,7 @@
 ```
 server {
     listen 443;
-    server_name wx.sge9999.com;
+    server_name xxx.com;
     ssl on;
     #root html;
     #index index.html index.htm;
@@ -46,8 +46,8 @@ server {
     ssl_prefer_server_ciphers on;
     location / {
         proxy_pass http://127.0.0.1:8888;
-        proxy_redirect  http://127.0.0.1:8888 https://wx.sge9999.com;
-        proxy_redirect  https://127.0.0.1:8443 https://wx.sge9999.com;
+        proxy_redirect  http://127.0.0.1:8888 https://xxx.com;
+        proxy_redirect  https://127.0.0.1:8443 https://xxx.com;
         proxy_set_header Host $host:$server_port;
         proxy_set_header X-Real-Ip $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
