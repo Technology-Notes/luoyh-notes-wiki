@@ -200,3 +200,17 @@ Re-enter new password:user0password
 # chown user0 /home/user0
 
 ```
+
+### 设置时区与同步时间
+
+```
+
+#> yum -y install ntpdate
+#> ntpdate time.windows.com
+#> timedatectl -- help
+#> timedatectl set-timezone "Asia/Shanghai"
+#> hwclock
+#> hwclock -w
+
+```
+
