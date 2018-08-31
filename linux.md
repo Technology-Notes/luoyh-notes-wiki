@@ -1,5 +1,29 @@
 # linux
 
+### mount
+
+```
+$> fdisk -l
+$> # /dev/sdb is 
+$> fdisk /dev/sdb
+#> n
+#> p
+#> 1
+#> # enter
+#> # enter
+#> p
+#> w
+$> partprobe
+$> mkfs -t ext4 /dev/sdb
+$> mount /dev/sdb /mnt/docker
+$> df -h
+$> blkid /dev/sdb
+$> vim /etc/fstab
+UUID=c327d2f6-32a8-47be-91a5-f49d4f1fca75 /mnt/docker ext4 defaults 0 2
+:wq
+$> init 6
+```
+
 ```
 du -ah --max-depth=1     这个是我想要的结果  a表示显示目录下所有的文件和文件夹（不含子目录），h表示以人类能看懂的方式，max-depth表示目录的深度。
 
