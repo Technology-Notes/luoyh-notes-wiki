@@ -125,6 +125,22 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 # 完成, 现在就可以使用ssh,端口为50001,密码是root进行登录了.
 
+```
 
+### change default image path on CentOS7
 
 ```
+$> mkdir /etc/systemd/system/docker.service.d
+$> vim /etc/systemd/system/docker.service.d/docker.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd --graph=/mnt/docker/image --storage-driver=overlay2
+# the "overlay2" is docker info and "storage-driver" line
+# the /mnt/docker/image is new path
+# :wq
+$> systemctl daemon-reload
+$> systemctl start docker
+
+```
+
+
