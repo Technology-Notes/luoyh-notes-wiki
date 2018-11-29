@@ -46,3 +46,43 @@ public Docket productApi() {
 
 ### URL参数匹配工具类
 > org.springframework.util.PatternMatchUtils
+
+
+### Dynamic change controller path
+
+```
+
+private static final String PATH_PATTERNS = "/708140bc2ef3fb8540bcd59beeaa1cb2579a896d";
+    
+    @Bean
+    public WebMvcRegistrations webMvcRegistrations() {
+        return new WebMvcRegistrationsAdapter() {
+
+            @Override
+            public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
+                
+                return new RequestMappingHandlerMapping() {
+
+                    @Override
+                    public void registerMapping(RequestMappingInfo mapping, Object handler, Method method) {
+                        
+                        if (method.isAnnotationPresent(RpcApi.class)) {
+                            System.out.println(method);
+                            mapping = new RequestMappingInfo(new PatternsRequestCondition(PATH_PATTERNS).combine(mapping.getPatternsCondition()), 
+                                    mapping.getMethodsCondition(), 
+                                    mapping.getParamsCondition(), 
+                                    mapping.getHeadersCondition(), 
+                                    mapping.getConsumesCondition(), 
+                                    mapping.getProducesCondition(), 
+                                    mapping.getCustomCondition());
+                        }
+                        super.registerMapping(mapping, handler, method);
+                    }
+                    
+                };
+            }
+            
+        };
+    }
+
+```
