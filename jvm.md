@@ -56,3 +56,17 @@ description:
     GCT: GC共消耗时间(s)
 
 ```
+
+### 定位异常代码
+
+```
+
+# CPU 100%
+#> jps # top
+#> top -Hp PID
+#> printf '%x\n' TID
+#> jstack PID >> 0.dump
+#> vim 0.dump
+$> /TID
+
+```
