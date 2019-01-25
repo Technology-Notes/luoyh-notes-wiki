@@ -238,3 +238,22 @@ Re-enter new password:user0password
 
 ```
 
+### shell **
+
+```
+# get PID, can use & and $!, eg:
+java -jar xxx.jar --spring.config.location=/opt/xxx.yml &
+echo $! > xxx.pid
+
+# or
+kill -9 `cat xxx.pid`
+kill -9 `jps -lm | grep xxx | awk '{print $1}'` # can use ps aux
+su - javaer -lc "kill -9 `jps -lm | grep xxx | awk '{print $1}'`"
+echo `jps -lm | grep xxx | awk '{print $1}'` > xxx.pid
+
+# get file name
+file=/opt/xxx/xxx-1.0.jar
+echo  ${file##*/} # xxx-1.0.jar
+
+```
+
