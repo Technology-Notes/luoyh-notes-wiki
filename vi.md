@@ -2,6 +2,19 @@
 
 > <a href="https://segmentfault.com/a/1190000008097357?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly" target="_blank">see here</a>
 
+# make tab to 4 spaces 
+
+```
+
+#> vim .vimrc
+set tabstop=4
+set shiftwidth=4
+set expandtab
+retab
+
+
+```
+
 ```
 进入vi的命令 
 vi filename :打开或新建文件，并将光标置于第一行首 
