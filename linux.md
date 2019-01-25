@@ -257,3 +257,23 @@ echo  ${file##*/} # xxx-1.0.jar
 
 ```
 
+# logrotate
+
+```
+# rotate tomcat catalina.out
+
+vim /etc/logrotate.d/tomcat
+
+/opt/tomcat/logs/catalina.out {
+    copytruncate
+    daily
+    rotate 7
+    compress
+    missingok
+    size 300M
+}
+
+# manually trigger
+logrotate /etc/logrotate.conf
+```
+
