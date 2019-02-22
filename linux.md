@@ -255,6 +255,17 @@ echo `jps -lm | grep xxx | awk '{print $1}'` > xxx.pid
 file=/opt/xxx/xxx-1.0.jar
 echo  ${file##*/} # xxx-1.0.jar
 
+
+su - roy -lc "echo 123 > z.log"
+
+# 前面的-表示切换到roy用户, 且环境变量,工作目录之类的都是roy用户.
+# -lc: l也是切换到用户目录, c表示执行完命令后返回到原来的用户
+
+ps -aux|grep -v grep|grep -E "tomcat|java"|awk '{print $2}'
+# grep -v 表示反向搜索, grep -v grep即表示不显示包含grep的.
+# grep -E 匹配多个
+# wc -l 返回匹配的行数
+
 ```
 
 # logrotate
