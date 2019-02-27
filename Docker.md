@@ -119,6 +119,13 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 #> /usr/sbin/sshd -D
 # Ctrl + p + q
 
+# Could not load host key: /etc/ssh/ssh_host_ecdsa_key
+# Could not load host key: /etc/ssh/ssh_host_ed25519_key
+#> ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+#> ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+#> ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+
+
 # 配置端口
 > firewall-cmd --zone=public --add-port=50001/tcp --permanent
 > firewall-cmd --reload
