@@ -10,6 +10,14 @@
 > CommandLineRunner , ApplicationRunner 
 ```
 
+### Like FeignClient implementation
+
+```
+1, BeanDefinitionRegistryPostProcessor
+2, ClassPathBeanDefinitionScanner
+3, FactoryBean
+```
+
 ### 获取参数名
 >org.springframework.core.LocalVariableTableParameterNameDiscoverer
 
@@ -84,5 +92,70 @@ private static final String PATH_PATTERNS = "/708140bc2ef3fb8540bcd59beeaa1cb257
             
         };
     }
+
+```
+
+### SpringBoot 自定义Jackson序列化, 反序列化
+
+```
+   private JsonSerializer<BigDecimal> bigDecimalSser() {
+        return new JsonSerializer<BigDecimal>() {
+
+            @Override
+            public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+                if (null != value) {
+                    gen.writeString(value.setScale(2, BigDecimal.ROUND_HALF_UP).toString());
+                }
+            }
+
+        };
+    }
+
+    private JsonDeserializer<BigDecimal> bigDecimalDeser() {
+
+        return new JsonDeserializer<BigDecimal>() {
+
+            @Override
+            public BigDecimal deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+                return p.getDecimalValue().setScale(2, BigDecimal.ROUND_HALF_UP);
+            }
+
+        };
+    }
+
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        SimpleModule testModule = new SimpleModule("bigDecimal-module", new Version(1, 0, 0, null, "", ""))
+                .addSerializer(BigDecimal.class, bigDecimalSser())
+                .addDeserializer(BigDecimal.class, bigDecimalDeser());
+        mapper.registerModule(testModule);
+        return mapper;
+    }
+
+// or
+
+    @Bean
+    public WebMvcConfigurer webMvcConfig() {
+        return new WebMvcConfigurer() {
+
+            @Override
+            public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+                for (HttpMessageConverter<?> converter : converters) {
+                    if (converter instanceof org.springframework.http.converter.json.MappingJackson2HttpMessageConverter) {
+                        ObjectMapper mapper = ((MappingJackson2HttpMessageConverter) converter).getObjectMapper();
+                        SimpleModule testModule = new SimpleModule("bigDecimal-module", new Version(1, 0, 0, null, "", ""))
+                                .addSerializer(BigDecimal.class, bigDecimalSser())
+                                .addDeserializer(BigDecimal.class, bigDecimalDeser());
+                        mapper.registerModule(testModule);
+                    }
+                }
+            }
+
+        };
+    }
+
+
 
 ```
