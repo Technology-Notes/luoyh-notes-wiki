@@ -1,5 +1,7 @@
 # linux
 
+### log /var/log/[message]
+
 ### mount
 
 ```
