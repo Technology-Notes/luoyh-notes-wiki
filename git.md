@@ -5,6 +5,9 @@
 
 ```
 
+# merge conflict
+> git checkout --[ours|theirs] -- [files]
+
 git clone x
 git add y
 git commit -m 'z'
