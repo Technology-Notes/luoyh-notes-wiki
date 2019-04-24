@@ -1,6 +1,8 @@
 # linux
 
-### log /var/log/[message]
+```
+
+# log /var/log/[message]
 crontab 启动停止:
 > systemctl start crond
 crontab 无日志
@@ -8,6 +10,7 @@ crontab 无日志
 > vim /etc/rsyslog.conf
 cron.* /var/log/cron
 
+```
 
 ### mount
 
