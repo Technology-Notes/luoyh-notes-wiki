@@ -24,6 +24,15 @@ retab
 ```
 
 ```
+
+# vim补全文件名: ctrl+x, ctrl+f
+# crontab 定时执行有些命令无法找到, 需 . /etc/profile 或 . ~/.bash_profile
+# crontab 的日志在 /var/log/cron 查找, 执行结果可在 /var/spool/mail/root 查看
+
+```
+
+
+```
 进入vi的命令 
 vi filename :打开或新建文件，并将光标置于第一行首 
 vi +n filename ：打开文件，并将光标置于第n行首 
