@@ -74,8 +74,10 @@ $> mysqld --remove mysql3307
 ### Backup with Xtrabackup
 
 ```
-
+> # backup
+> # if error by 'Too open many files' do this: ulimit -n 65535
 > xtrabackup --backup --target-dir=/data/backups -S /data/dev/mysql.sock -p123456 [--defaults-file=/data/dev/my.cnf]
+> # restore
 > xtrabackup --copy-back --target-dir=/data/backups --datadir=/data/xxx
 > chown -R mysql:mysql /data/xxx
 > # cp /etc/init.d/mysql.server && then start
