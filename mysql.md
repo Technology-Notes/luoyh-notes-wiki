@@ -63,9 +63,25 @@ mysql\bin\mysqld --defaults-file=mysql\my.ini mysql3307
 
 $> net start mysql3307
 $> mysql -uroot -p -P3307
-mysql> set password = password(‘root’);
+mysql> set password = password('root');
 mysql> \q
 
 $> mysqld --remove mysql3307
 
 ```
+
+
+### Backup with Xtrabackup
+
+```
+
+> xtrabackup --backup --target-dir=/data/backups -S /data/dev/mysql.sock -p123456 [--defaults-file=/data/dev/my.cnf]
+> xtrabackup --copy-back --target-dir=/data/backups --datadir=/data/xxx
+> chown -R mysql:mysql /data/xxx
+> # cp /etc/init.d/mysql.server && then start
+
+```
+
+
+
+
