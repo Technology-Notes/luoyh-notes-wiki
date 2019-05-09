@@ -1,6 +1,12 @@
 some command:
 
 ```
+
+# save | load
+> docker save quay.io/coreos/flannel:v0.11.0-amd64 > flannel.tar
+> docker load < flannel.tar
+
+
 # pull
 docker pull xxx
 
