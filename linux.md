@@ -161,6 +161,10 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 yum clean all
 yum makecache
 
+# 查看版本号
+yum list docker-ce --showduplicates
+
+
 ```
 
 > firewall
