@@ -42,6 +42,8 @@ $> kubectl create serviceaccount dashboard-admin -n kube-system
 $> kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
 $> kubectl get secret -n kube-system
 $> kubectl describe secret dashboard-admin-token-7pc9h -n kube-system
+$> # 运行应用安装到master
+$> kubectl taint nodes --all node-role.kubernetes.io/master-
 
 ```
 
