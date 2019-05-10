@@ -1,14 +1,53 @@
 ### kubeadm
 
 ```
+$> # 设置aliyun的docker yum源
+$> curl -lO https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+$> mv docker-ce.repo /etc/yum.repos.d/
+$> # 查找docker, 显示所有版本
+$> yum list docker-ce --showduplicates 
+$> yum -y install docker-ce-18.06.3.ce-3.el7
+$> systemctl start docker # systemctl enable docker
+$> # kubernetes yum源, 可禁用gpgcheck和repo_gpgcheck, 不然会出现签名错误
+$> cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+   [kubernetes]
+   name=Kubernetes
+   baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+   enabled=1
+   gpgcheck=1
+   repo_gpgcheck=1
+   gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg ttps://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+   EOF
+$> # 可指定版本, 如kubelet-1.14.1
+$> yum install -y kubelet kubeadm kubectl
+$> kubeadm init \
+   --apiserver-advertise-address=192.168.11.252 \
+   --image-repository registry.aliyuncs.com/google_containers \
+   --kubernetes-version v1.14.1 \
+   --service-cidr=10.1.0.0/16 \
+   --pod-network-cidr=10.244.0.0/16
+$> # 创建nginx pods   
+$> kubectl create deployment nginx --image=nginx   
+$> kubectl expose deployment nginx --port=80 --type=NodePort
+$> # 删除pods
+$> kubectl delete pods nginx-65f88748fd-zsb6c --force
+$> # 查看pods, [-n namespace] 指定命令空间, svc查看随机端口
+$> kubectl get pods[,svc]
+$> # dashboard
+$> kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+$> # flannel
+$> kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
+$> # dashboard 帐号, token
+$> kubectl create serviceaccount dashboard-admin -n kube-system
+$> kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
+$> kubectl get secret -n kube-system
+$> kubectl describe secret dashboard-admin-token-7pc9h -n kube-system
 
 ```
-
 
 ### minikube
 
 ```
-
 
 Kubernetes : Minikube : Install2015/12/13
  	
