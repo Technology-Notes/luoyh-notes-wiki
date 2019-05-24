@@ -312,4 +312,37 @@ x、d$、dd——删除一个字符、删除光标所在处到行尾的所有字
 ---- 使用命令“:%s#/usr/bin#/bin#g”可以把文件中所有路径/usr/bin换成/bin。也可以使用命令“:%s//usr/bin//bin/g”实现，其中“”是转义字符，表明其后的“/”字符是具有实际意义的字符，不是分隔符。
 ```
 
+### SOS
 
+```
+#!/bin/bash
+
+token=$(/usr/local/redis/src/redis-cli -h 10.0.17.31 -a 'mypwd' -n 7 hget AUTH:TOKEN login_token | awk '{print substr($0,4)}')
+
+
+curl -X POST --header 'Content-Type: application/json' --header "Authorization: $token" --header 'Accept: application/json' -d '{"msg": "hello world!!"}' http://10.0.17.31/api/sos
+
+echo $token
+
+
+```
+
+### backup
+
+```
+#!/bin/bash
+
+#线上数据库全量备份
+mysqldump -uroot -p123456 -h localhost \
+ --databases test mydb \
+ -R -E --triggers \
+ --set-gtid-purged=OFF \
+ --single-transaction \
+ --hex-blob > /opt/mysqlbackup/fullbackup_$(date -d "1 day ago" +"%Y%m%d").sql
+# 压缩备份的文件
+gzip /opt/mysqlbackup/fullbackup_$(date -d "1 day ago" +"%Y%m%d").sql
+
+# 删除历史文件
+find /opt/mysqlbackup -mtime +3 -name 'fullbackup_*' -exec rm {} \;
+
+```
