@@ -45,3 +45,8 @@ curl -v -X PUT http://localhost:10000/eureka/apps/HENGBOY-SPRING-CLOUD-EUREKA-PR
 
 ```
 
+
+```
+--spring.cloud.inetutils.use-only-site-local-interfaces=true
+```
+
