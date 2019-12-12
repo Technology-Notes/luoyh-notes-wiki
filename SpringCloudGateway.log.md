@@ -4,7 +4,7 @@
 
 ```
 
-must be imple ` GlobalFilter, Ordered ` , then ` order < -1 `
+must be implements ` GlobalFilter, Ordered ` , then ` order < -1 `
 
 
 private ServerHttpResponseDecorator logResponse(ServerWebExchange exchange) {
