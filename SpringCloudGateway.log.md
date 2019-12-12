@@ -1,6 +1,11 @@
 ` chain.filter(exchange.mutate().response(logResponse(exchange)).build()); `
 
+
+
 ```
+
+must be imple ` GlobalFilter, Ordered ` , then ` order < -1 `
+
 
 private ServerHttpResponseDecorator logResponse(ServerWebExchange exchange) {
         ServerHttpResponse origResponse = exchange.getResponse();
