@@ -8,7 +8,7 @@
 # merge conflict
 > git checkout --[ours|theirs] -- [files]
 
-git clone x
+git clone --depth 1 x
 git add y
 git commit -m 'z'
 git push
@@ -25,7 +25,7 @@ git commmit -m "init"
 git push -u origin master
 
 # clone wiki
-git clone https://github.com/luoyh/notes.wiki.git
+git clone --depth 1 https://github.com/luoyh/notes.wiki.git
 
 ```
 
@@ -52,13 +52,13 @@ $ git branch -a
 git remote set-url origin http://xxxx.git
 
 git低版本使用用户名密码方式
-git clone http://用户名:密码@xxx.com/yyy.git
+git clone --depth 1 http://用户名:密码@xxx.com/yyy.git
 
 
 git 常用命令
 基本命令
 
-代码检出：git clone 地址
+代码检出：git clone --depth 1 地址
 
 文件修改添加到暂存区：git add readme.txt
 
